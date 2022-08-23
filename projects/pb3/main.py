@@ -42,5 +42,11 @@ def prime_factor_decomposition(val):
 
 
 if __name__ == "__main__":
-    primes = prime_factor_decomposition(600851475143)
-    print(f"The prime factors of 600851475143 are {primes}")
+    primes = prime_factor_decomposition(600851475143 )
+    print(f"The prime factors of 600851475143  are {primes}")
+    
+
+
+
+    
+
