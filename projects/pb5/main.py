@@ -46,11 +46,6 @@ if __name__ == "__main__":
         if is_prime(i):
             print(i)
 
-    print(prime_factor_decomposition(18))
-    print(prime_factor_decomposition(4))
-    print(prime_factor_decomposition(8))
-    print(prime_factor_decomposition(20))
-
 """
 le plus petit entier divisble par les entiers dans [1...20]
 
