@@ -3,8 +3,9 @@ import time
 
 def print_chrono_with_func(f):
     chrono = Chrono()
-    f()
+    r=f()
     chrono()
+    print(r)
     print(chrono)
 
 

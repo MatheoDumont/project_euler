@@ -13,11 +13,8 @@ Find the product abc.
 import math
 from chronometer import print_chrono_with_func
 
-def condition(a, b, c):
-    return a+b+c == ABC and a**2 + b**2 == c**2
-
-
 ABC = 1000
+
 
 def brute_force():
     """
@@ -27,7 +24,7 @@ def brute_force():
     for c in range(1, ABC+1):
         for b in range(1, c):
             for a in range(1, b):
-                if condition(a, b, c):
+                if a+b+c == ABC and a**2 + b**2 == c**2:
                     return a, b, c
 
 
@@ -43,15 +40,35 @@ def s2():
     for c in range(1, ABC-3):
         for b in range(1, c):
             a = ABC - c - b
-            if condition(a, b, c):
+            if a**2 + b**2 == c**2:
                 return a, b, c
 
 
 def s3():
     """
     probably a way to compute bounds of c, a or b.
+    """ 
+    for a in range(3, (ABC-3)//3):
+        aa = a*a
+        # in theory, range should be (a,qsd ABC//2) and not (ABC//3, ABC//2)
+        for b in range(a+1, (ABC-1-a)//2):
+            c = ABC - a - b
+            # it's faster to ignore if a+b+c is even than to test
+            if aa + b*b == c*c:
+                return a, b, c
 
-    """
+
 if __name__ == "__main__":
     print_chrono_with_func(brute_force)
     print_chrono_with_func(s2)
+    print_chrono_with_func(s3)
+
+    # for i in range(9, 1000+1):
+    #     ABC = i
+    #     s = s3()
+    #     if s:
+    #         a,b,c=s
+    #         if a < b and b<c and a<c and a**2+b**2 == c**2:
+    #             print(f"({ABC}) OK: {s}")
+    #         else:
+    #             print(f"ERROR: {s}")
