@@ -1,0 +1,3 @@
+#!/bin/bash
+# https://stackoverflow.com/questions/60593604/importerror-attempted-relative-import-with-no-known-parent-package
+python -m $1.main
