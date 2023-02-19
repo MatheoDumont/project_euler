@@ -1,9 +1,9 @@
 import time
 
 
-def print_chrono_with_func(f):
+def print_chrono_with_func(f, *args, **kwargs):
     chrono = Chrono()
-    r=f()
+    r=f(*args, **kwargs)
     chrono()
     print(r)
     print(chrono)
