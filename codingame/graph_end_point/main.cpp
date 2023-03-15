@@ -8,7 +8,24 @@
 using namespace std;
 
 //  g++ -w ascii.cpp && ./a.out
+/*
+* Handled Graphs are one oriented with only a single edge departing from a node but many can be arriving
+* a Node cannot be directly linked to itself.
+* Used object are array describing edges, one array for the departing nodes and one for the arriving nodes,
+* a pair at the same indice in both arrays forming an edge connecting node fromIds[i] to toIds[i].
 
+fromIds = {1, 2, 3, 4}
+toids = {3, 3, 4, 5}
+correspond to 
+
+1->3
+2->3
+3->4
+4->5
+
+and no edges leave 5, so the algo in this case should return 5, 
+whatever the startNodeId, the output should be 5 in this case.
+*/
 int find_edge(int node, vector<int> fromIds)
 {
     /*
@@ -53,7 +70,9 @@ int timing(int ids, vector<int> vec1, vector<int> vec2)
     int r = find_nextwork_endpoint(ids, vec1, vec2);
     auto tac = chrono::high_resolution_clock::now();
     auto int_ms = chrono::duration_cast<chrono::milliseconds>(tac - tic);
-    cout << "Time: " << int_ms.count() << endl;
+    
+    float in_sec = (float) int_ms.count() / 10e3;
+    cout << "Time: " << in_sec << " sec" << endl;
     return r;
 }
 
@@ -106,10 +125,22 @@ void test_cirle()
     result(r, 4, "circle");
 }
 
+void test_disconnected_graph()
+{
+    vector<int> fromIds({1, 2, 4, 5});
+    vector<int> toIds({2, 3, 5, 6});
+    int r = timing(4, fromIds, toIds);
+    result(r, 6, "disconnected graph 1");
+
+    r = timing(1, fromIds, toIds);
+    result(r, 3, "disconnected graph 2");
+}
+
 int main()
 {
     test_simple();
     test_ten_thousand_nodes();
     test_loop();
     test_cirle();
+    test_disconnected_graph();
 }
