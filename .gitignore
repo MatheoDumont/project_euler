@@ -1,2 +1,5 @@
 projects/**/__pycache__
 projects/**/__init__.pyc
+
+projects/**/a.out
+codingame/**/a.out
