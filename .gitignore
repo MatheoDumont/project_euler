@@ -4,3 +4,4 @@ projects/**/__init__.pyc
 projects/**/a.out
 codingame/**/a.out
 ./**/.vscode
+.vscode
