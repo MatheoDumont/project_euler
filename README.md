@@ -11,6 +11,7 @@ My answers to the problems of [ProjectEuler](https://projecteuler.net/about)
 
 [Livre computer system](http://csapp.cs.cmu.edu/3e/courses.html)
 [Cours computer system oriente developpement](https://www.cs.cmu.edu/~213/schedule.html)
+[Ressources orientés math pour la simulation (limité?)](http://calculuslab.deltacollege.edu/)
 
 ## Papiers
 [Revue sur l'etat de l'intelligence artifielle en 2023](https://aiindex.stanford.edu/wp-content/uploads/2023/04/HAI_AI-Index-Report_2023.pdf
