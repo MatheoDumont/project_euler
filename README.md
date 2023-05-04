@@ -11,7 +11,7 @@ My answers to the problems of [ProjectEuler](https://projecteuler.net/about)
 
 * [Livre computer system](http://csapp.cs.cmu.edu/3e/courses.html)  
 * [Cours computer system oriente developpement](https://www.cs.cmu.edu/~213/schedule.html)  
-* [Ressources orientés math pour la simulation (limité?)](http://calculuslab.deltacollege.edu/)  
+* [Ressources orientés math pour la simulation (limité? et nécessite mathematica)](http://calculuslab.deltacollege.edu/)  
 * [Nature Of code: livre sur la simulation naturelle, sim physic, modèle, trick, pas trop basé physique](https://natureofcode.com/book)  
 
 ## Papiers
