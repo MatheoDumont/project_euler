@@ -6,13 +6,24 @@
 PB 28
 
 last of layer n+1 is
-last_n+1 = last_n + 8*n
+    last_n+1 = last_n + 8*n
+this is because, 
+    last_0 = 1, the special starting case, then each term are in the top right corner,
+    in the first layer, the step is of 2, and for each next layer, we multipler by 2, taking account that the index of the layer is also the radius of this layer
+    in the grid
+    
 
 sum of layer n+1 is
-sum_n+1 = 4*last_n + 20*n
+    sum_n+1 = 4*last_n + 20*n
+this is factorized from the
+    sum_0 = 1, last_O = 1
+    sum_1 = last_0+2*1 + last_0+2*2 + last_0+2*3 + last_0+2*4
+    sum_1 = 4*sum_0 + 20*1
+    sum_i = 4*sum_i-1 + 20*i
+    sum_i+1 = 4*sum_i + 20*i
 
 if we compute separately last_n from the sum we get
-sum_n+1 = 3*last_n + 12*n + last_n+1
+    sum_n+1 = 3*last_n + 12*n + last_n+1
 
 since we see the grid as a spiral of a "circle", its radius is the (diameter+1)/2
 
