@@ -2,9 +2,9 @@
 #include <vector>
 #include <iostream>
 #include <chrono>
+#include <array>
 
 // g++ -std=c++17 -O2 main.cpp && ./a.out
-
 
 static const std::vector coins{2.0f, 1.0f, 0.5f, 0.2f, 0.1f, 0.05f, 0.02f, 0.01f};
 // mutliply by 100 to avoid float computation, like in chrono lib
@@ -23,7 +23,7 @@ int denombre()
         int value = e.first;
         int last_coin_index = e.second;
         queue.pop();
-        if (last_coin_index == coins_100.size() - 1)
+        if (last_coin_index == coins_100.size() - 1 || value == 0)
         {
             ++n;
             continue;
@@ -33,29 +33,30 @@ int denombre()
         for (int i = value / current_coin; i >= 0; --i)
         {
             int tmp = value - i * current_coin;
-            if (tmp == 0)
-                ++n;
-            else
-                queue.push(std::make_pair(tmp, last_coin_index + 1));
+
+            queue.push(std::make_pair(tmp, last_coin_index + 1));
         }
     }
     return n;
 }
 
-int denombre_recursif(int value, int index_coin)
+int denombre_recursif(int value, int index_coin, int (&mem)[201][8])
 {
     if (value == 0 || index_coin == coins_100.size() - 1)
         return 1;
 
-    int somme = 0;
-    for (int i = value / coins_100[index_coin]; i >= 0; --i)
-        somme += denombre_recursif(value - i * coins_100[index_coin], index_coin + 1);
+    if (mem[value][index_coin] == 0)
+        for (int i = value / coins_100[index_coin]; i >= 0; --i)
+            mem[value][index_coin] += denombre_recursif(value - i * coins_100[index_coin], index_coin + 1, mem);
 
-    return somme;
+    return mem[value][index_coin];
 }
 
 int main()
 {
+
+    int mem[201][8] = {0};
+
     {
         auto t1 = std::chrono::high_resolution_clock::now();
         std::cout << denombre() << std::endl;
@@ -64,8 +65,23 @@ int main()
     }
     {
         auto t1 = std::chrono::high_resolution_clock::now();
-        std::cout << denombre_recursif(200, 0) << std::endl;
+        std::cout << denombre_recursif(200, 0, mem) << std::endl;
         auto elapsed = std::chrono::high_resolution_clock::now() - t1;
         std::cout << "[RECURSIF] elapsed time: " << elapsed.count() / 10e6 << "ms" << std::endl;
     }
+    // std::cout << "    ";
+    // for (int coin_index = coins_100.size() - 1; coin_index >= 0; --coin_index)
+    // {
+    //     std::cout << coins_100[coin_index] << " ";
+    // }
+    // std::cout << std::endl;
+    // for (int value = 0; value < 9; ++value)
+    // {
+    //     std::cout << "(" << value << ") ";
+    //     for (int coin_index = coins_100.size() - 1; coin_index >= 0; --coin_index)
+    //     {
+    //         std::cout << denombre_recursif(value, coin_index, mem) << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
 }
