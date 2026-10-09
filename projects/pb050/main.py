@@ -41,14 +41,16 @@ def max_sum_before_bound(primes, bound, starting_step=0):
     return i-starting_step, s
 
 set_primes = set(primes)
+first_prime = 0
 for i in range(100):
     i, s = max_sum_before_bound(primes, UPPER_BOUND, i)
     if s in set_primes:
-        print(f"{s} PRIME avec {i} nombre")
+        first_prime = (i, s)
+        break
 
 max_window = max_sum_before_bound(primes, UPPER_BOUND, 0)[0]
 tab = build_sum_of_prime_array(primes, max_window)
 
-print(f"le nombre max de nombres premiers sommés inférieur à {UPPER_BOUND} est {max_window} et donne {tab[max_window-1]}")
-
+print(f"le nombre max de nombres premiers sommés inférieur à {UPPER_BOUND} est {max_window} et donne {tab[max_window-1]}\n")
+print(f"Résultat:\nLe nombre premier {first_prime[1]} est le plus grand avant {UPPER_BOUND} avec {first_prime[0]} nombres premiers sommés")
 
