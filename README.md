@@ -1,7 +1,27 @@
 # Project Euler
-
-
 My answers to the problems of [ProjectEuler](https://projecteuler.net/about)
+## Startup
+
+Pour utiliser les modules python
+'''
+python -m projects.pbxxx.main
+python -m projects.pb050.main
+'''
+nécessaire pour le pb050 qui utilise la lib "primes".
+
+## Avec uv pour env python
+
+```
+uv venv
+```
+et
+```windows
+.venv\Scripts\activate
+```
+ou
+```linux
+source .venv/bin/activate
+```
 # Ressources
 
 ## Posts
